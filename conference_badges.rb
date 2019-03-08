@@ -16,17 +16,19 @@ end
 end
 
 
-
-
-def assign_rooms(name, room)
-    speakers.each_with_index do |name, room|
-    "Hello, #{name}! You'll be assigned to room #{room}."
-end
+def assign_rooms(speakers)
+    speakers.each_with_index.map do |attendee, index|
+        "Hello, #{attendee}! You'll be assigned to room #{index+1}!"
+    end
 end
 
-
-
-
-def printer
-print batch_badge_creator(name)
+def printer(speakers)
+    batch_badge_creator(speakers).each do |badge|
+        puts badge
+    end
+    
+    assign_rooms(speakers).each do |assignment|
+        puts assignment
+    end
+end
 
